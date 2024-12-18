@@ -47,13 +47,10 @@ def update_progress():
 
 if __name__ == '__main__':
     print("""
-    ____                 ______ __               
-   / __ \ ____ _ ____ _ / ____// /____  _      __
-  / /_/ // __ `// __ `// /_   / // __ \| | /| / /
- / _, _// /_/ // /_/ // __/  / // /_/ /| |/ |/ / 
-/_/ |_| \__,_/ \__, //_/    /_/ \____/ |__/|__/  
-              /____/                             
-
+    ########### 欢迎使用知识库 ############
+    This is a branch forked from "infiniflow/ragflow", 
+    where Lynn1 made some bug fixes and customizations.
+    ######################################
     """, flush=True)
     stat_logger.info(
         f'project base: {utils.file_utils.get_project_base_directory()}'

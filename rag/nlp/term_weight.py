@@ -84,7 +84,7 @@ class Dealer:
         except Exception as e:
             print("[WARNING] Load ner.json FAIL!")
         try:
-            self.df = load_dict(os.path.join(fnm, "term.freq"))
+            self.df = load_dict(os.path.join(fnm, "huqie.txt")) #term.freq doesn't seem right
         except Exception as e:
             print("[WARNING] Load term.freq FAIL!")
 

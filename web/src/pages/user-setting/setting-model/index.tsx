@@ -43,24 +43,9 @@ import {
 import styles from './index.less';
 import OllamaModal from './ollama-modal';
 import SystemModelSettingModal from './system-model-setting-modal';
-import VolcEngineModal from './volcengine-model';
 
 const IconMap = {
-  'Tongyi-Qianwen': 'tongyi',
-  Moonshot: 'moonshot',
-  OpenAI: 'openai',
-  'ZHIPU-AI': 'zhipu',
-  文心一言: 'wenxin',
   Ollama: 'ollama',
-  Xinference: 'xinference',
-  DeepSeek: 'deepseek',
-  VolcEngine: 'volc_engine',
-  BaiChuan: 'baichuan',
-  Jina: 'jina',
-  Minimax: 'chat-minimax',
-  Mistral: 'mistral',
-  'Azure-OpenAI': 'azure',
-  Bedrock: 'bedrock',
 };
 
 const LlmIcon = ({ name }: { name: string }) => {
@@ -294,13 +279,6 @@ const UserSettingModel = () => {
         loading={llmAddingLoading}
         llmFactory={selectedLlmFactory}
       ></OllamaModal>
-      <VolcEngineModal
-        visible={volcAddingVisible}
-        hideModal={hideVolcAddingModal}
-        onOk={onVolcAddingOk}
-        loading={volcAddingLoading}
-        llmFactory={selectedVolcFactory}
-      ></VolcEngineModal>
     </section>
   );
 };

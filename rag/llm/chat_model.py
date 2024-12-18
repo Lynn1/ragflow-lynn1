@@ -313,7 +313,9 @@ class OllamaChat(Base):
                 options=options,
                 keep_alive=-1
             )
+            print("【Lynn1-Debug】:",self.model_name,history,options) #######
             ans = response["message"]["content"].strip()
+            print("【Lynn1-Debug】:",ans)
             return ans, response["eval_count"] + response.get("prompt_eval_count", 0)
         except Exception as e:
             return "**ERROR**: " + str(e), 0

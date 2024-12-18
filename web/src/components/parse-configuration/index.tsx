@@ -12,7 +12,7 @@ import {
 } from 'antd';
 import random from 'lodash/random';
 
-export const excludedParseMethods = ['table', 'resume', 'one',"picture"];
+export const excludedParseMethods = ['table', 'resume', 'one', 'picture'];
 
 export const showRaptorParseConfiguration = (parserId: string) => {
   return !excludedParseMethods.includes(parserId);
@@ -86,7 +86,7 @@ const ParseConfiguration = () => {
                           },
                         ]}
                       >
-                        <Slider max={2048} style={{ width: '100%' }} />
+                        <Slider max={32768} style={{ width: '100%' }} />
                       </Form.Item>
                     </Flex>
                     <Form.Item
@@ -99,7 +99,7 @@ const ParseConfiguration = () => {
                         },
                       ]}
                     >
-                      <InputNumber max={2048} min={0} />
+                      <InputNumber max={32768} min={0} />
                     </Form.Item>
                   </Flex>
                 </Form.Item>

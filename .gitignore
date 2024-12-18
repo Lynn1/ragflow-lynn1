@@ -30,6 +30,7 @@ docker/ragflow-logs/
 /flask_session
 /logs
 rag/res/deepdoc
+/lynn1-test
 
 # Exclude sdk generated files
 sdk/python/ragflow.egg-info/

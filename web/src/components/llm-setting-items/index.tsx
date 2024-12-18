@@ -262,7 +262,7 @@ const LlmSettingItems = ({ prefix, formItemLayout = {} }: IProps) => {
                     >
                       <Slider
                         className={styles.variableSlider}
-                        max={2048}
+                        max={32768}
                         disabled={disabled}
                       />
                     </Form.Item>
@@ -271,7 +271,7 @@ const LlmSettingItems = ({ prefix, formItemLayout = {} }: IProps) => {
                     <InputNumber
                       disabled={disabled}
                       className={styles.sliderInputNumber}
-                      max={2048}
+                      max={32768}
                       min={0}
                     />
                   </Form.Item>

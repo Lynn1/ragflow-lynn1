@@ -190,6 +190,10 @@ class ZhipuEmbed(Base):
 class OllamaEmbed(Base):
     def __init__(self, key, model_name, **kwargs):
         self.client = Client(host=kwargs["base_url"])
+        if model_name == "qwen2-embeddings":
+            model_name = "qwen2"
+        elif model_name == "qwen2:72b-embeddings":
+            model_name = "qwen2:72b"
         self.model_name = model_name
 
     def encode(self, texts: list, batch_size=32):

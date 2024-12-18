@@ -57,54 +57,54 @@ REQUEST_MAX_WAIT_SEC = 300
 USE_REGISTRY = get_base_config("use_registry")
 
 default_llm = {
-    "Tongyi-Qianwen": {
-        "chat_model": "qwen-plus",
-        "embedding_model": "text-embedding-v2",
-        "image2text_model": "qwen-vl-max",
-        "asr_model": "paraformer-realtime-8k-v1",
-    },
-    "OpenAI": {
-        "chat_model": "gpt-3.5-turbo",
-        "embedding_model": "text-embedding-ada-002",
-        "image2text_model": "gpt-4-vision-preview",
-        "asr_model": "whisper-1",
-    },
-    "Azure-OpenAI": {
-        "chat_model": "azure-gpt-35-turbo",
-        "embedding_model": "azure-text-embedding-ada-002",
-        "image2text_model": "azure-gpt-4-vision-preview",
-        "asr_model": "azure-whisper-1",
-    },
-    "ZHIPU-AI": {
-        "chat_model": "glm-3-turbo",
-        "embedding_model": "embedding-2",
-        "image2text_model": "glm-4v",
-        "asr_model": "",
-    },
+    # "Tongyi-Qianwen": {
+    #     "chat_model": "qwen-plus",
+    #     "embedding_model": "text-embedding-v2",
+    #     "image2text_model": "qwen-vl-max",
+    #     "asr_model": "paraformer-realtime-8k-v1",
+    # },
+    # "OpenAI": {
+    #     "chat_model": "gpt-3.5-turbo",
+    #     "embedding_model": "text-embedding-ada-002",
+    #     "image2text_model": "gpt-4-vision-preview",
+    #     "asr_model": "whisper-1",
+    # },
+    # "Azure-OpenAI": {
+    #     "chat_model": "azure-gpt-35-turbo",
+    #     "embedding_model": "azure-text-embedding-ada-002",
+    #     "image2text_model": "azure-gpt-4-vision-preview",
+    #     "asr_model": "azure-whisper-1",
+    # },
+    # "ZHIPU-AI": {
+    #     "chat_model": "glm-3-turbo",
+    #     "embedding_model": "embedding-2",
+    #     "image2text_model": "glm-4v",
+    #     "asr_model": "",
+    # },
     "Ollama": {
-        "chat_model": "qwen-14B-chat",
-        "embedding_model": "flag-embedding",
-        "image2text_model": "",
+        "chat_model": "qwen2:72b",
+        "embedding_model": "qwen2-embeddings",
+        "image2text_model": "llava",
         "asr_model": "",
     },
-    "Moonshot": {
-        "chat_model": "moonshot-v1-8k",
-        "embedding_model": "",
-        "image2text_model": "",
-        "asr_model": "",
-    },
-    "DeepSeek": {
-        "chat_model": "deepseek-chat",
-        "embedding_model": "",
-        "image2text_model": "",
-        "asr_model": "",
-    },
-    "VolcEngine": {
-        "chat_model": "",
-        "embedding_model": "",
-        "image2text_model": "",
-        "asr_model": "",
-    },
+    # "Moonshot": {
+    #     "chat_model": "moonshot-v1-8k",
+    #     "embedding_model": "",
+    #     "image2text_model": "",
+    #     "asr_model": "",
+    # },
+    # "DeepSeek": {
+    #     "chat_model": "deepseek-chat",
+    #     "embedding_model": "",
+    #     "image2text_model": "",
+    #     "asr_model": "",
+    # },
+    # "VolcEngine": {
+    #     "chat_model": "",
+    #     "embedding_model": "",
+    #     "image2text_model": "",
+    #     "asr_model": "",
+    # },
     "BAAI": {
         "chat_model": "",
         "embedding_model": "BAAI/bge-large-zh-v1.5",
@@ -114,16 +114,16 @@ default_llm = {
     }
 }
 LLM = get_base_config("user_default_llm", {})
-LLM_FACTORY = LLM.get("factory", "Tongyi-Qianwen")
+LLM_FACTORY = LLM.get("factory", "Ollama")
 LLM_BASE_URL = LLM.get("base_url")
 
 if LLM_FACTORY not in default_llm:
     print(
         "\33[91m【ERROR】\33[0m:",
-        f"LLM factory {LLM_FACTORY} has not supported yet, switch to 'Tongyi-Qianwen/QWen' automatically, and please check the API_KEY in service_conf.yaml.")
-    LLM_FACTORY = "Tongyi-Qianwen"
+        f"LLM factory {LLM_FACTORY} has not supported yet, switch to 'Ollama' automatically, and please check the settings in service_conf.yaml.")
+    LLM_FACTORY = "Ollama"
 CHAT_MDL = default_llm[LLM_FACTORY]["chat_model"]
-EMBEDDING_MDL = default_llm["BAAI"]["embedding_model"]
+EMBEDDING_MDL = default_llm["Ollama"]["embedding_model"] #["BAAI"]["embedding_model"]
 RERANK_MDL = default_llm["BAAI"]["rerank_model"]
 ASR_MDL = default_llm[LLM_FACTORY]["asr_model"]
 IMAGE2TEXT_MDL = default_llm[LLM_FACTORY]["image2text_model"]

@@ -9,6 +9,7 @@ import NewDocumentLink from '@/components/new-document-link';
 import SvgIcon from '@/components/svg-icon';
 import { useGetDocumentUrl } from '@/hooks/documentHooks';
 import { useSelectFileThumbnails } from '@/hooks/knowledgeHook';
+import { useSendButtonDisabled } from '@/pages/chat/hooks';
 import { getExtension, isPdf } from '@/utils/documentUtils';
 import { forwardRef, useMemo } from 'react';
 import MarkdownContent from '../markdown-content';
@@ -19,7 +20,6 @@ import {
 } from '../shared-hooks';
 import { buildMessageItemReference } from '../utils';
 import styles from './index.less';
-import {useSendButtonDisabled} from "@/pages/chat/hooks";
 
 const MessageItem = ({
   item,
@@ -66,18 +66,17 @@ const MessageItem = ({
           })}
         >
           {item.role === MessageType.User ? (
-            <Avatar
-              size={40}
-              src={
-                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-              }
-            />
+            <Avatar size={40} src={'/avatar.jpg'} />
           ) : (
             <AssistantIcon></AssistantIcon>
           )}
           <Flex vertical gap={8} flex={1}>
             <b>{isAssistant ? '' : 'You'}</b>
-            <div className={isAssistant ? styles.messageText : styles.messageUserText}>
+            <div
+              className={
+                isAssistant ? styles.messageText : styles.messageUserText
+              }
+            >
               <MarkdownContent
                 reference={reference}
                 clickDocumentButton={() => {}}

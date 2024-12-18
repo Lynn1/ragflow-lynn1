@@ -14,7 +14,8 @@ import {
   useFetchConversationOnMount,
   useGetFileIcon,
   useGetSendButtonDisabled,
-  useSelectConversationLoading, useSendButtonDisabled,
+  useSelectConversationLoading,
+  useSendButtonDisabled,
   useSendMessage,
 } from '../hooks';
 import MarkdownContent from '../markdown-content';
@@ -75,19 +76,17 @@ const MessageItem = ({
           })}
         >
           {item.role === MessageType.User ? (
-            <Avatar
-              size={40}
-              src={
-                userInfo.avatar ??
-                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-              }
-            />
+            <Avatar size={40} src={userInfo.avatar ?? '/avatar.jpg'} />
           ) : (
             <AssistantIcon></AssistantIcon>
           )}
           <Flex vertical gap={8} flex={1}>
             <b>{isAssistant ? '' : userInfo.nickname}</b>
-            <div className={isAssistant ? styles.messageText : styles.messageUserText}>
+            <div
+              className={
+                isAssistant ? styles.messageText : styles.messageUserText
+              }
+            >
               <MarkdownContent
                 content={content}
                 reference={reference}
